@@ -1,12 +1,15 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        c = [ch.lower() for ch in s if ch.isalnum()]
+        # Keep only alphanumeric characters and make lowercase
+        c = ''.join(char.lower() for char in s if char.isalnum())
+        
         a = 0
         b = len(c) - 1
-        while a <= b:
-                if c[a] == c[b]:
-                    a += 1
-                    b -= 1
-                else:
-                    return False
+
+        while a < b:
+            if c[a] != c[b]:
+                return False
+            a += 1
+            b -= 1
+
         return True
